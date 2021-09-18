@@ -1,5 +1,7 @@
 FROM gcc:latest
 ADD ./ /app/
 WORKDIR /app/
-RUN sed -i 's#Greeting.*#Greeting = "Hi there"#g' ./settings.conf && g++ ./main.cpp && ./a.out
-ENTRYPOINT ["./a.out"]
+ARG GREETING="Hi there"
+ENV GREETING $GREETING
+RUN sed -i 's#Greeting.*#Greeting = '"$GREETING"'#g' settings.conf && g++ ./main.cpp && ./a.out
+CMD sed -i 's#Greeting.*#Greeting = '"$GREETING"'#g' settings.conf && g++ ./main.cpp && ./a.out
