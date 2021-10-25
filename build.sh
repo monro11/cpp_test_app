@@ -11,4 +11,3 @@ CMD sed -i 's#Greeting.*#Greeting = '\"\$GREETING\"'#g' settings.conf && g++ ./m
 docker build -t intellias-cpp-test ./
 docker tag  intellias-cpp-test:latest monro11/intellias-cpp-test:latest
 docker push monro11/intellias-cpp-test:latest
-#some comment
